@@ -11,9 +11,6 @@ def create_todo_endpoint(todo: todo_schema.TodoCreate):
     return todo_crud.create_todo(todo)
 
 
-
-
-
 @router.get("/{todo_id}", response_model=todo_schema.Todo)
 def get_todo_endpoint(todo_id: str):
     todo =  todo_crud.get_todo(todo_id)
