@@ -54,7 +54,6 @@ class TodoCrud:
         return None
 
 
-
     @staticmethod
     def delete_todo(todo_id: str):
         if not ObjectId.is_valid(todo_id):
