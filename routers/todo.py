@@ -37,6 +37,7 @@ def update_todo_endpoint(
         raise HTTPException(status_code=404, detail="Todo not found")
     return updated_todo
 
+
 @router.delete("/{todo_id}")
 def delete_todo_endpoint(todo_id: str):
     if not todo_crud.delete_todo(todo_id):
