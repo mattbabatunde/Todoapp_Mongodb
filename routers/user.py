@@ -18,7 +18,6 @@ def get_user_by_id(user_id: str):
     raise HTTPException(404, detail="Todo does not exit")
 
 
-
 @router.get("/",response_model=list[user_schema.User])
 def list_users():
     users = user_crud.list_users()
