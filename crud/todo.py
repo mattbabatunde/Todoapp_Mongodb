@@ -42,7 +42,7 @@ class TodoCrud:
         if not ObjectId.is_valid(todo_id):
             return None  
 
-        updated_todo =  todo_collection.find_one_and_update(
+        updated_todo =  todo_collection.update_one(
             {"_id": ObjectId(todo_id)},
             {"$set": jsonable_encoder(todo_update)},
             return_document=True 
@@ -59,7 +59,7 @@ class TodoCrud:
     def delete_todo(todo_id: str):
         if not ObjectId.is_valid(todo_id):
             return None 
-        deleted_todo =  todo_collection.find_one_and_delete({"_id": ObjectId(todo_id)})
+        deleted_todo =  todo_collection.delete_one({"_id": ObjectId(todo_id)})
 
         if deleted_todo:
             return serializer.todo_serializer(deleted_todo)

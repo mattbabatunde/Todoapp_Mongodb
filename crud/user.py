@@ -43,7 +43,7 @@ class UserCrud:
         if not ObjectId.is_valid(user_id):
             return None
         
-        updated_user = user_collection.find_one_and_update(
+        updated_user = user_collection.update_one(
             {"_id": ObjectId(user_id)},
             {"$set": jsonable_encoder(user_update)},
             return_document=True
@@ -60,7 +60,7 @@ class UserCrud:
     def delete_user( user_id: str):
        if not ObjectId.is_valid(user_id):
            return None
-       deleted_user = user_collection.find_one_and_delete({"_id": ObjectId(user_id)})
+       deleted_user = user_collection.delete_one({"_id": ObjectId(user_id)})
        if deleted_user:
           return serializer.user_serializer(deleted_user)
        return None
